@@ -1,0 +1,257 @@
+'''
+ * SQL file Containing Learning Assignment
+ *
+ * Copyright 2011 Vedsar
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+'''
+
+NAME:-VEDSAR KUSHWAHA
+ENROLL:-53515
+STUDENT ID:-51060
+
+
+
+
+
+
+QUESTION 1:
+
+SQL> create user hp identified by hp;
+
+User created.
+SQL> grant create session,create table to hp;
+
+Grant succeeded.
+
+
+
+
+QUESTION 2:
+
+SQL> create user t1 identified by t1 quota 10M on system;
+
+User created.
+
+SQL> create user t2 identified by t2 quota 10M on system;
+
+User created.
+
+SQL> grant create session,create table to t1,t2;
+
+Grant succeeded.
+
+SQL> conn t1/t1
+Connected.
+SQL> create table emp(e_id number primary key,e_name varchar2(30));
+
+Table created.
+
+SQL> insert into emp values(12,'ved');
+
+1 row created.
+
+SQL> insert into emp values(14,'test');
+
+1 row created.
+
+SQL> insert into emp values(4,'ved_test');
+
+1 row created.
+
+SQL> grant select,insert,update,delete on emp to t2;
+
+Grant succeeded.
+
+SQL> conn t2/t2;
+Connected.
+SQL> select * from t1.emp;
+
+      E_ID E_NAME                                                               
+---------- ------------------------------                                       
+        12 ved                                                                  
+        14 test                                                                 
+         4 ved_test                                                             
+
+SQL> insert into t1.emp values(1,'by e2');
+
+1 row created.
+
+SQL> update t1.emp set e_name='t2' where e_id=4;
+
+1 row updated.
+
+SQL> delete from t1.emp where e_id=4;
+
+1 row deleted.
+
+
+
+
+QUESTION 3:
+
+SQL> create user bob identified by crusader quota 1m on system;
+
+User created.
+
+SQL> grant create session to bob;
+
+Grant succeeded.
+
+SQL> SELECT * FROM USER_TS_QUOTAS;
+
+TABLESPACE_NAME                     BYTES  MAX_BYTES     BLOCKS
+------------------------------ ---------- ---------- ----------
+SYSTEM                                  0    1048576          0
+
+
+
+
+QUESTION 4:
+
+SQL> ALTER USER BOB IDENTIFIED BY OLINK PASSWORD EXPIRE;
+
+User altered.
+
+SQL> CONN BOB/OLINK
+ERROR:
+ORA-28001: the password has expired
+
+
+Changing password for BOB
+New password:
+Retype new password:
+Password changed
+Connected.
+
+
+
+
+QUESTION 5:
+
+SQL> set serveroutput on
+SQL> begin
+  2  dbms_output.put_line('My PL/SQL Block Works');
+  3  end;
+  4  /
+My PL/SQL Block Works                                                           
+
+PL/SQL procedure successfully completed.
+
+
+
+
+QUESTION 6:
+
+SQL> declare
+  2  v_char varchar2(50);
+  3  v_num number(10);
+  4  begin
+  5  v_char='42 is the answer';
+  6  v_num=to_number(substr(v_char,1,2));
+  7  dbms_output.put_line(v_char||' '||v_num);
+  8  end;
+  9  /
+
+42 is the answer 42
+
+PL/SQL procedure successfully completed.
+
+
+
+QUESTION 7:
+
+  1  declare
+  2  a number(10);
+  3  b number(10);
+  4  r number(10,3);
+  5  begin
+  6  a:=&p_num1;
+  7  b:=&p_num2;
+  8  r:=(a/b)+b;
+  9  dbms_output.put_line(r);
+ 10* end;
+SQL> /
+old   6: a:=&p_num1;
+new   6: a:=2;
+old   7: b:=&p_num2;
+new   7: b:=4;
+4.5
+
+PL/SQL procedure successfully completed.
+
+
+
+
+QUESTION 8:
+
+SQL> declare
+  2  a number;
+  3  begin
+  4  select max(department_id) into a from departments;
+  5  dbms_output.put_line(a);
+  6  end;
+  7  /
+
+PL/SQL procedure successfully completed.
+
+270
+
+
+
+
+QUESTION 9:
+
+SQL> create table mera_dept(deptno number(10),dname varchar2(30),locationid numb
+er);
+
+Table created.
+
+  1  declare
+  2  a number(10);
+  3  begin
+  4  select max(department_id) into a from employees;
+  5  insert into mera_dept values(a+10,'&p_dname',null);
+  6* end;
+SQL> /
+old   5: insert into mera_dept values(a+10,'&p_dname',null);
+new   5: insert into mera_dept values(a+10,'Education',null);
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from mera_dept;
+
+    DEPTNO DNAME                          LOCATIONID
+---------- ------------------------------ ----------
+       120 Education
+
+QUESTION 10:
+
+SQL> define p_loc=170
+SQL> declare
+  2  a number(10);
+  3  begin
+  4  select deptno into a from mera_dept;
+  5  update mera_dept set locationid='&p_loc' where deptno=280;
+  6  end;
+  7  /
+old   5: update mera_dept set locationid='&p_loc' where deptno=280;
+new   5: update mera_dept set locationid='170' where deptno=280;
+
+PL/SQL procedure successfully completed.
+
+SQL> select * from mera_dept;
+
+    DEPTNO DNAME                          LOCATIONID                            
+---------- ------------------------------ ----------                            
+       120 Education                                                            

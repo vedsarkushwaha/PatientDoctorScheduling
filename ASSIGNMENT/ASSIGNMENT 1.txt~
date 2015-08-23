@@ -1,0 +1,368 @@
+'''
+ * SQL file Containing Learning Assignment
+ *
+ * Copyright 2011 Vedsar
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+'''
+
+
+
+NAME:-VEDSAR KUSHWAHA
+ENROLL:-53515
+STUDENT ID:-51060
+
+
+SQL> conn hr
+Connected.
+
+
+
+
+QUESTION:1
+
+SQL> create table department(id number(7),name varchar2(30));
+
+Table created.
+
+
+SQL> desc departments;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ DEPARTMENT_ID                             NOT NULL NUMBER(4)
+ DEPARTMENT_NAME                           NOT NULL VARCHAR2(30)
+ MANAGER_ID                                         NUMBER(6)
+ LOCATION_ID                                        NUMBER(4)
+
+SQL> insert into department
+  2  select department_id,department_name from departments;
+
+27 rows created.
+
+
+
+
+QUESTION:2
+
+SQL> create table employee(id number(7), name varchar2(20), deptid number(7));
+
+Table created.
+
+SQL> alter table employee modify name varchar2(50);
+
+Table altered.
+
+SQL> desc employee;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                                 NUMBER(7)
+ NAME                                               VARCHAR2(50)
+ DEPTID                                             NUMBER(7)
+
+
+
+
+QUESTION:3
+
+SQL> rename employee to emp;
+
+Table renamed.
+
+SQL> alter table emp drop(deptid);
+
+Table altered.
+
+SQL> desc emp;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                                 NUMBER(7)
+ NAME                                               VARCHAR2(50)
+
+
+
+
+QUESTION:4
+
+SQL> create table my_employee(id number(4),last_name varchar2(25), first_name varchar2(25), userid varchar2(8), salary number(9,2));
+
+Table created.
+
+
+
+
+QUESTION:5
+
+SQL> insert into my_employee values(1,'Patel','Ralph','rpatel',895);
+
+1 row created.
+
+
+
+
+QUESTION:6
+
+SQL> insert into my_employee(id,last_name,first_name,userid,salary) values(2,'Dancs','Betty','bdancs',860);
+
+1 row created.
+
+SQL> select * from my_employee;
+
+        ID LAST_NAME                 FIRST_NAME                USERID           
+---------- ------------------------- ------------------------- --------         
+    SALARY                                                                      
+----------                                                                      
+         1 Patel                     Ralph                     rpatel           
+       895                                                                      
+                                                                                
+         2 Dancs                     Betty                     bdancs           
+       860                                                                      
+                                                                                
+2 rows selected
+
+
+
+
+QUESTION:7
+
+SQL> commit;
+
+Commit complete.
+
+SQL> update my_employee set salary=1000 where id=1;
+
+1 row updated.
+
+SQL> update my_employee set salary=895 where id=1;
+
+1 row updated.
+
+
+
+
+QUESTION:8
+
+SQL> update my_employee set last_name='Drexler' where id=3;
+
+0 rows updated.
+
+SQL> insert into my_employee(id,last_name,first_name,userid,salary) values(3,'Biri','Ben','bbiri',1100);
+
+1 row created.
+
+SQL> update my_employee set last_name='Drexler' where id=3;
+
+1 row updated.
+
+
+
+
+QUESTION:9
+
+SQL> update my_employee set salary=1000 where salary<900;
+
+2 rows updated.
+
+SQL> select * from my_employee;
+
+        ID LAST_NAME                 FIRST_NAME                USERID           
+---------- ------------------------- ------------------------- --------         
+    SALARY                                                                      
+----------                                                                      
+         3 Drexler                   Ben                       bbiri            
+      1100                                                                      
+                                                                                            
+         1 Patel                     Ralph                     rpatel           
+      1000
+                                                                         
+         2 Dancs                     Betty                     bdancs           
+      1000                                                                      
+
+
+
+
+QUESTION:10
+
+SQL> delete my_employee where id=2;
+
+1 row deleted.
+
+SQL> select * from my_employee;
+
+        ID LAST_NAME                 FIRST_NAME                USERID           
+---------- ------------------------- ------------------------- --------         
+    SALARY                                                                      
+----------                                                                      
+         3 Drexler                   Ben                       bbiri            
+      1100                                                                      
+                                                                                            
+         1 Patel                     Ralph                     rpatel           
+      1000 
+
+
+
+
+QUESTION:11
+
+SQL> commit;
+
+Commit complete.
+
+
+
+
+QUESTION:12
+
+SQL> insert into my_employee(id,last_name,first_name,userid,salary) values(5,'Ropeburn','Audrey','aropebur',1550);
+
+1 row created.
+
+SQL> select * from my_employee;
+
+        ID LAST_NAME                 FIRST_NAME                USERID           
+---------- ------------------------- ------------------------- --------         
+    SALARY                                                                      
+----------                                                                      
+         3 Drexler                   Ben                       bbiri            
+      1100                                                                      
+                                                                                
+         5 Ropeburn                  Audrey                    aropebur         
+      1550                                                                      
+                                                                                
+         1 Patel                     Ralph                     rpatel           
+      1000                                                                      
+                                                                                
+
+
+
+QUESTION:13
+
+SQL> savepoint ved_a;
+
+Savepoint created.
+
+SQL> delete my_employee;
+
+3 rows deleted.
+
+
+
+
+QUESTION:14
+
+SQL> select * from my_employee;
+
+no rows selected
+
+
+
+
+QUESTION:15
+
+SQL> rollback to savepoint ved_a;
+
+Rollback complete.
+
+SQL> select * from my_employee;
+
+        ID LAST_NAME                 FIRST_NAME                USERID           
+---------- ------------------------- ------------------------- --------         
+    SALARY                                                                      
+----------                                                                      
+         3 Drexler                   Ben                       bbiri            
+      1100                                                                      
+                                                                                
+         5 Ropeburn                  Audrey                    aropebur         
+      1550                                                                      
+                                                                                
+         1 Patel                     Ralph                     rpatel           
+      1000                                                                      
+
+                                                                                
+
+
+QUESTION:16
+
+SQL> create table department1(id number(7),name varchar2(10));
+
+Table created.
+
+SQL> insert into department1 values(1,'Amit''s');
+
+1 row created.
+
+SQL> select * from department1;
+
+        ID NAME                                                                 
+---------- ----------                                                           
+         1 Amit's                                                               
+
+
+
+
+QUESTION:17
+
+SQL> alter table emp add commision number(2,2);
+
+Table altered.
+
+SQL> desc emp;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                                 NUMBER(7)
+ NAME                                               VARCHAR2(50)
+ COMMISION                                          NUMBER(2,2)
+
+
+
+
+QUESTION:18
+
+SQL> alter table emp drop column commision;
+
+Table altered.
+
+SQL> desc emp;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ ID                                                 NUMBER(7)
+ NAME                                               VARCHAR2(50)
+
+
+
+
+QUESTION:19
+
+SQL> alter table emp rename column id to emp_id;
+
+Table altered.
+
+SQL> desc emp;
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMP_ID                                             NUMBER(7)
+ NAME                                               VARCHAR2(50)
+
+
+
+
+QUESTION:20
+
+SQL> truncate table emp;
+
+Table truncated.
+
+SQL> select * from emp;
+
+no rows selected
+
+SQL> spool off

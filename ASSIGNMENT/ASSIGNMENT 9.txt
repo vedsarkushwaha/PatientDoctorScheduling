@@ -1,0 +1,170 @@
+'''
+ * SQL file Containing Learning Assignment
+ *
+ * Copyright 2011 Vedsar
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+'''
+
+
+NAME:-VEDSAR KUSHWAHA
+ENROLL:-53515
+STUDENT ID:-51060
+
+
+
+
+
+
+QUESTION 1:
+
+SQL> create view dept50(empno,employee,deptno) as select employee_id,first_name||' '||last_name,department_id from employees where department_id=50 with check option;
+
+View created.
+
+
+
+
+QUESTION 2:
+
+SQL> create view salary_vu(Employee,Department,Salary) as select first_name||' '||last_name,department_name,salary from employees,departments where employees.department_id=departments.department_id;
+
+View created.
+
+
+
+
+QUESTION 3:
+
+SQL> select first_name||' '||last_name,employee_id,to_char(sysdate-hire_date) experience from (select * from employees order by hire_date) where rownum<=4;
+
+FIRST_NAME||''||LAST_NAME                      EMPLOYEE_ID                      
+---------------------------------------------- -----------                      
+EXPERIENCE                                                                      
+----------------------------------------                                        
+Steven King                                            100                      
+9148.97525462962962962962962962962962963                                        
+                                                                                
+Jennifer Whalen                                        200                      
+9056.97525462962962962962962962962962963                                        
+                                                                                
+Neena Kochhar                                          101                      
+8321.97525462962962962962962962962962963                                        
+                                                                                
+
+FIRST_NAME||''||LAST_NAME                      EMPLOYEE_ID                      
+---------------------------------------------- -----------                      
+EXPERIENCE                                                                      
+----------------------------------------                                        
+Alexander Hunold                                       103                      
+8217.97525462962962962962962962962962963                                        
+                                                                                
+
+
+
+QUESTION 4:
+
+SQL> create sequence dept_id_seq start with 200 increment by 10 maxvalue 1000;
+
+Sequence created.
+
+
+
+
+QUESTION 5:
+
+SQL> select manager_id,job_id,sum(salary) from employees where manager_id<120 group by rollup(manager_id,job_id);
+
+MANAGER_ID JOB_ID     SUM(SALARY)                                               
+---------- ---------- -----------                                               
+       100 AD_VP            34000                                               
+       100 MK_MAN           13000                                               
+       100 PU_MAN           11000                                               
+       100 SA_MAN           61000                                               
+       100 ST_MAN           36400                                               
+       100                 155400                                               
+       101 AC_MGR           12000                                               
+       101 FI_MGR           12000                                               
+       101 HR_REP            6500                                               
+       101 PR_REP           10000                                               
+       101 AD_ASST           4400                                               
+
+MANAGER_ID JOB_ID     SUM(SALARY)                                               
+---------- ---------- -----------                                               
+       101                  44900                                               
+       102 IT_PROG           9000                                               
+       102                   9000                                               
+       103 IT_PROG          19800                                               
+       103                  19800                                               
+       108 FI_ACCOUNT       39600                                               
+       108                  39600                                               
+       114 PU_CLERK         13900                                               
+       114                  13900                                               
+                           282600                                               
+
+21 rows selected.
+
+
+
+
+QUESTION 6:
+
+SQL> select manager_id,job_id,sum(salary) from employees where manager_id<120 group by cube(manager_id,job_id);
+
+MANAGER_ID JOB_ID     SUM(SALARY)                                               
+---------- ---------- -----------                                               
+                           282600                                               
+           AD_VP            34000                                               
+           AC_MGR           12000                                               
+           FI_MGR           12000                                               
+           HR_REP            6500                                               
+           MK_MAN           13000                                               
+           PR_REP           10000                                               
+           PU_MAN           11000                                               
+           SA_MAN           61000                                               
+           ST_MAN           36400                                               
+           AD_ASST           4400                                               
+
+MANAGER_ID JOB_ID     SUM(SALARY)                                               
+---------- ---------- -----------                                               
+           IT_PROG          28800                                               
+           PU_CLERK         13900                                               
+           FI_ACCOUNT       39600                                               
+       100                 155400                                               
+       100 AD_VP            34000                                               
+       100 MK_MAN           13000                                               
+       100 PU_MAN           11000                                               
+       100 SA_MAN           61000                                               
+       100 ST_MAN           36400                                               
+       101                  44900                                               
+       101 AC_MGR           12000                                               
+
+MANAGER_ID JOB_ID     SUM(SALARY)                                               
+---------- ---------- -----------                                               
+       101 FI_MGR           12000                                               
+       101 HR_REP            6500                                               
+       101 PR_REP           10000                                               
+       101 AD_ASST           4400                                               
+       102                   9000                                               
+       102 IT_PROG           9000                                               
+       103                  19800                                               
+       103 IT_PROG          19800                                               
+       108                  39600                                               
+       108 FI_ACCOUNT       39600                                               
+       114                  13900                                               
+
+MANAGER_ID JOB_ID     SUM(SALARY)                                               
+---------- ---------- -----------                                               
+       114 PU_CLERK         13900                                               
+
+34 rows selected.

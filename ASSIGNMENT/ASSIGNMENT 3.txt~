@@ -1,0 +1,2343 @@
+'''
+ * SQL file Containing Learning Assignment
+ *
+ * Copyright 2011 Vedsar
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+'''
+
+NAME:-VEDSAR KUSHWAHA
+ENROLL:-53515
+STUDENT ID:-51060
+
+
+
+
+
+QUESTION 1:
+
+SQL> select sysdate from dual;
+
+SYSDATE                                                                         
+---------                                                                       
+24-JUN-12                                                                       
+
+SQL> desc employees
+ Name                                      Null?    Type
+ ----------------------------------------- -------- ----------------------------
+ EMPLOYEE_ID                               NOT NULL NUMBER(6)
+ FIRST_NAME                                         VARCHAR2(20)
+ LAST_NAME                                 NOT NULL VARCHAR2(25)
+ EMAIL                                     NOT NULL VARCHAR2(25)
+ PHONE_NUMBER                                       VARCHAR2(20)
+ HIRE_DATE                                 NOT NULL DATE
+ JOB_ID                                    NOT NULL VARCHAR2(10)
+ SALARY                                             NUMBER(8,2)
+ COMMISSION_PCT                                     NUMBER(2,2)
+ MANAGER_ID                                         NUMBER(6)
+ DEPARTMENT_ID                                      NUMBER(4)
+
+SQL> select employee_id,last_name,salary,salary*1.15 as "Increased Sal" from employees;
+
+EMPLOYEE_ID LAST_NAME                     SALARY Increased Sal                  
+----------- ------------------------- ---------- -------------                  
+        100 King                           24000         27600                  
+        101 Kochhar                        17000         19550                  
+        102 De Haan                        17000         19550                  
+        103 Hunold                          9000         10350                  
+        104 Ernst                           6000          6900                  
+        105 Austin                          4800          5520                  
+        106 Pataballa                       4800          5520                  
+        107 Lorentz                         4200          4830                  
+        108 Greenberg                      12000         13800                  
+        109 Faviet                          9000         10350                  
+        110 Chen                            8200          9430                  
+
+EMPLOYEE_ID LAST_NAME                     SALARY Increased Sal                  
+----------- ------------------------- ---------- -------------                  
+        111 Sciarra                         7700          8855                  
+        112 Urman                           7800          8970                  
+        113 Popp                            6900          7935                  
+        114 Raphaely                       11000         12650                  
+        115 Khoo                            3100          3565                  
+        116 Baida                           2900          3335                  
+        117 Tobias                          2800          3220                  
+        118 Himuro                          2600          2990                  
+        119 Colmenares                      2500          2875                  
+        120 Weiss                           8000          9200                  
+        121 Fripp                           8200          9430                  
+
+EMPLOYEE_ID LAST_NAME                     SALARY Increased Sal                  
+----------- ------------------------- ---------- -------------                  
+        122 Kaufling                        7900          9085                  
+        123 Vollman                         6500          7475                  
+        124 Mourgos                         5800          6670                  
+        125 Nayer                           3200          3680                  
+        126 Mikkilineni                     2700          3105                  
+        127 Landry                          2400          2760                  
+        128 Markle                          2200          2530                  
+        129 Bissot                          3300          3795                  
+        130 Atkinson                        2800          3220                  
+        131 Marlow                          2500          2875                  
+        132 Olson                           2100          2415                  
+
+EMPLOYEE_ID LAST_NAME                     SALARY Increased Sal                  
+----------- ------------------------- ---------- -------------                  
+        133 Mallin                          3300          3795                  
+        134 Rogers                          2900          3335                  
+        135 Gee                             2400          2760                  
+        136 Philtanker                      2200          2530                  
+        137 Ladwig                          3600          4140                  
+        138 Stiles                          3200          3680                  
+        139 Seo                             2700          3105                  
+        140 Patel                           2500          2875                  
+        141 Rajs                            3500          4025                  
+        142 Davies                          3100          3565                  
+        143 Matos                           2600          2990                  
+
+EMPLOYEE_ID LAST_NAME                     SALARY Increased Sal                  
+----------- ------------------------- ---------- -------------                  
+        144 Vargas                          2500          2875                  
+        145 Russell                        14000         16100                  
+        146 Partners                       13500         15525                  
+        147 Errazuriz                      12000         13800                  
+        148 Cambrault                      11000         12650                  
+        149 Zlotkey                        10500         12075                  
+        150 Tucker                         10000         11500                  
+        151 Bernstein                       9500         10925                  
+        152 Hall                            9000         10350                  
+        153 Olsen                           8000          9200                  
+        154 Cambrault                       7500          8625                  
+
+EMPLOYEE_ID LAST_NAME                     SALARY Increased Sal                  
+----------- ------------------------- ---------- -------------                  
+        155 Tuvault                         7000          8050                  
+        156 King                           10000         11500                  
+        157 Sully                           9500         10925                  
+        158 McEwen                          9000         10350                  
+        159 Smith                           8000          9200                  
+        160 Doran                           7500          8625                  
+        161 Sewall                          7000          8050                  
+        162 Vishney                        10500         12075                  
+        163 Greene                          9500         10925                  
+        164 Marvins                         7200          8280                  
+        165 Lee                             6800          7820                  
+
+EMPLOYEE_ID LAST_NAME                     SALARY Increased Sal                  
+----------- ------------------------- ---------- -------------                  
+        166 Ande                            6400          7360                  
+        167 Banda                           6200          7130                  
+        168 Ozer                           11500         13225                  
+        169 Bloom                          10000         11500                  
+        170 Fox                             9600         11040                  
+        171 Smith                           7400          8510                  
+        172 Bates                           7300          8395                  
+        173 Kumar                           6100          7015                  
+        174 Abel                           11000         12650                  
+        175 Hutton                          8800         10120                  
+        176 Taylor                          8600          9890                  
+
+EMPLOYEE_ID LAST_NAME                     SALARY Increased Sal                  
+----------- ------------------------- ---------- -------------                  
+        177 Livingston                      8400          9660                  
+        178 Grant                           7000          8050                  
+        179 Johnson                         6200          7130                  
+        180 Taylor                          3200          3680                  
+        181 Fleaur                          3100          3565                  
+        182 Sullivan                        2500          2875                  
+        183 Geoni                           2800          3220                  
+        184 Sarchand                        4200          4830                  
+        185 Bull                            4100          4715                  
+        186 Dellinger                       3400          3910                  
+        187 Cabrio                          3000          3450                  
+
+EMPLOYEE_ID LAST_NAME                     SALARY Increased Sal                  
+----------- ------------------------- ---------- -------------                  
+        188 Chung                           3800          4370                  
+        189 Dilly                           3600          4140                  
+        190 Gates                           2900          3335                  
+        191 Perkins                         2500          2875                  
+        192 Bell                            4000          4600                  
+        193 Everett                         3900          4485                  
+        194 McCain                          3200          3680                  
+        195 Jones                           2800          3220                  
+        196 Walsh                           3100          3565                  
+        197 Feeney                          3000          3450                  
+        198 OConnell                        2600          2990                  
+
+EMPLOYEE_ID LAST_NAME                     SALARY Increased Sal                  
+----------- ------------------------- ---------- -------------                  
+        199 Grant                           2600          2990                  
+        200 Whalen                          4400          5060                  
+        201 Hartstein                      13000         14950                  
+        202 Fay                             6000          6900                  
+        203 Mavris                          6500          7475                  
+        204 Baer                           10000         11500                  
+        205 Higgins                        12000         13800                  
+        206 Gietz                           8300          9545                  
+
+107 rows selected.
+
+
+
+
+QUESTION 2:
+
+SQL> select last_name, round(months_between(sysdate,hire_date)) as "MONTH_WORKED" from employees order by 2;
+
+LAST_NAME                 MONTH_WORKED                                          
+------------------------- ------------                                          
+Kumar                              146                                          
+Banda                              146                                          
+Ande                               147                                          
+Markle                             148                                          
+Lee                                148                                          
+Geoni                              149                                          
+Grant                              149                                          
+Philtanker                         149                                          
+Zlotkey                            149                                          
+Marvins                            149                                          
+Perkins                            150                                          
+
+LAST_NAME                 MONTH_WORKED                                          
+------------------------- ------------                                          
+Gee                                150                                          
+Johnson                            150                                          
+Popp                               151                                          
+Tuvault                            151                                          
+Mourgos                            151                                          
+Cambrault                          152                                          
+Colmenares                         154                                          
+OConnell                           156                                          
+Sullivan                           156                                          
+Grant                              157                                          
+Olson                              158                                          
+
+LAST_NAME                 MONTH_WORKED                                          
+------------------------- ------------                                          
+Jones                              159                                          
+Greene                             159                                          
+Bates                              159                                          
+Smith                              160                                          
+Lorentz                            161                                          
+Cabrio                             161                                          
+Landry                             161                                          
+Cambrault                          162                                          
+Himuro                             163                                          
+Sewall                             164                                          
+Mikkilineni                        165                                          
+
+LAST_NAME                 MONTH_WORKED                                          
+------------------------- ------------                                          
+Rogers                             166                                          
+Gates                              167                                          
+Vargas                             167                                          
+Dellinger                          168                                          
+McCain                             168                                          
+Feeney                             169                                          
+Walsh                              170                                          
+Livingston                         170                                          
+Patel                              171                                          
+Matos                              171                                          
+Taylor                             171                                          
+
+LAST_NAME                 MONTH_WORKED                                          
+------------------------- ------------                                          
+Bloom                              171                                          
+Olsen                              171                                          
+Urman                              172                                          
+Fleaur                             172                                          
+Seo                                172                                          
+Taylor                             173                                          
+Fox                                173                                          
+Pataballa                          173                                          
+Baida                              174                                          
+Doran                              174                                          
+Vishney                            175                                          
+
+LAST_NAME                 MONTH_WORKED                                          
+------------------------- ------------                                          
+Stiles                             176                                          
+Atkinson                           176                                          
+Vollman                            176                                          
+Chen                               177                                          
+Sciarra                            177                                          
+Dilly                              178                                          
+Fay                                178                                          
+Bissot                             178                                          
+Hall                               178                                          
+Nayer                              179                                          
+Tobias                             179                                          
+
+LAST_NAME                 MONTH_WORKED                                          
+------------------------- ------------                                          
+Austin                             180                                          
+Chung                              180                                          
+Fripp                              182                                          
+Hutton                             183                                          
+Errazuriz                          183                                          
+Smith                              183                                          
+Bernstein                          183                                          
+Ozer                               183                                          
+Marlow                             184                                          
+Everett                            184                                          
+Bull                               184                                          
+
+LAST_NAME                 MONTH_WORKED                                          
+------------------------- ------------                                          
+Davies                             185                                          
+Tucker                             185                                          
+Partners                           186                                          
+Russell                            189                                          
+McEwen                             191                                          
+Weiss                              191                                          
+Mallin                             192                                          
+Abel                               193                                          
+Sully                              196                                          
+Hartstein                          196                                          
+Bell                               197                                          
+
+LAST_NAME                 MONTH_WORKED                                          
+------------------------- ------------                                          
+Sarchand                           197                                          
+King                               197                                          
+Rajs                               200                                          
+Ladwig                             203                                          
+Khoo                               205                                          
+Kaufling                           206                                          
+Raphaely                           211                                          
+Greenberg                          214                                          
+Faviet                             214                                          
+Mavris                             217                                          
+Baer                               217                                          
+
+LAST_NAME                 MONTH_WORKED                                          
+------------------------- ------------                                          
+Higgins                            217                                          
+Gietz                              217                                          
+De Haan                            233                                          
+Ernst                              253                                          
+Hunold                             270                                          
+Kochhar                            273                                          
+Whalen                             297                                          
+King                               300                                          
+
+107 rows selected.
+
+
+
+
+QUESTION 3:
+
+SQL> select last_name,lpad(salary,15,'$') as SALARY from employees;
+
+LAST_NAME                 SALARY                                                
+------------------------- ---------------                                       
+King                      $$$$$$$$$$24000                                       
+Kochhar                   $$$$$$$$$$17000                                       
+De Haan                   $$$$$$$$$$17000                                       
+Hunold                    $$$$$$$$$$$9000                                       
+Ernst                     $$$$$$$$$$$6000                                       
+Austin                    $$$$$$$$$$$4800                                       
+Pataballa                 $$$$$$$$$$$4800                                       
+Lorentz                   $$$$$$$$$$$4200                                       
+Greenberg                 $$$$$$$$$$12000                                       
+Faviet                    $$$$$$$$$$$9000                                       
+Chen                      $$$$$$$$$$$8200                                       
+
+LAST_NAME                 SALARY                                                
+------------------------- ---------------                                       
+Sciarra                   $$$$$$$$$$$7700                                       
+Urman                     $$$$$$$$$$$7800                                       
+Popp                      $$$$$$$$$$$6900                                       
+Raphaely                  $$$$$$$$$$11000                                       
+Khoo                      $$$$$$$$$$$3100                                       
+Baida                     $$$$$$$$$$$2900                                       
+Tobias                    $$$$$$$$$$$2800                                       
+Himuro                    $$$$$$$$$$$2600                                       
+Colmenares                $$$$$$$$$$$2500                                       
+Weiss                     $$$$$$$$$$$8000                                       
+Fripp                     $$$$$$$$$$$8200                                       
+
+LAST_NAME                 SALARY                                                
+------------------------- ---------------                                       
+Kaufling                  $$$$$$$$$$$7900                                       
+Vollman                   $$$$$$$$$$$6500                                       
+Mourgos                   $$$$$$$$$$$5800                                       
+Nayer                     $$$$$$$$$$$3200                                       
+Mikkilineni               $$$$$$$$$$$2700                                       
+Landry                    $$$$$$$$$$$2400                                       
+Markle                    $$$$$$$$$$$2200                                       
+Bissot                    $$$$$$$$$$$3300                                       
+Atkinson                  $$$$$$$$$$$2800                                       
+Marlow                    $$$$$$$$$$$2500                                       
+Olson                     $$$$$$$$$$$2100                                       
+
+LAST_NAME                 SALARY                                                
+------------------------- ---------------                                       
+Mallin                    $$$$$$$$$$$3300                                       
+Rogers                    $$$$$$$$$$$2900                                       
+Gee                       $$$$$$$$$$$2400                                       
+Philtanker                $$$$$$$$$$$2200                                       
+Ladwig                    $$$$$$$$$$$3600                                       
+Stiles                    $$$$$$$$$$$3200                                       
+Seo                       $$$$$$$$$$$2700                                       
+Patel                     $$$$$$$$$$$2500                                       
+Rajs                      $$$$$$$$$$$3500                                       
+Davies                    $$$$$$$$$$$3100                                       
+Matos                     $$$$$$$$$$$2600                                       
+
+LAST_NAME                 SALARY                                                
+------------------------- ---------------                                       
+Vargas                    $$$$$$$$$$$2500                                       
+Russell                   $$$$$$$$$$14000                                       
+Partners                  $$$$$$$$$$13500                                       
+Errazuriz                 $$$$$$$$$$12000                                       
+Cambrault                 $$$$$$$$$$11000                                       
+Zlotkey                   $$$$$$$$$$10500                                       
+Tucker                    $$$$$$$$$$10000                                       
+Bernstein                 $$$$$$$$$$$9500                                       
+Hall                      $$$$$$$$$$$9000                                       
+Olsen                     $$$$$$$$$$$8000                                       
+Cambrault                 $$$$$$$$$$$7500                                       
+
+LAST_NAME                 SALARY                                                
+------------------------- ---------------                                       
+Tuvault                   $$$$$$$$$$$7000                                       
+King                      $$$$$$$$$$10000                                       
+Sully                     $$$$$$$$$$$9500                                       
+McEwen                    $$$$$$$$$$$9000                                       
+Smith                     $$$$$$$$$$$8000                                       
+Doran                     $$$$$$$$$$$7500                                       
+Sewall                    $$$$$$$$$$$7000                                       
+Vishney                   $$$$$$$$$$10500                                       
+Greene                    $$$$$$$$$$$9500                                       
+Marvins                   $$$$$$$$$$$7200                                       
+Lee                       $$$$$$$$$$$6800                                       
+
+LAST_NAME                 SALARY                                                
+------------------------- ---------------                                       
+Ande                      $$$$$$$$$$$6400                                       
+Banda                     $$$$$$$$$$$6200                                       
+Ozer                      $$$$$$$$$$11500                                       
+Bloom                     $$$$$$$$$$10000                                       
+Fox                       $$$$$$$$$$$9600                                       
+Smith                     $$$$$$$$$$$7400                                       
+Bates                     $$$$$$$$$$$7300                                       
+Kumar                     $$$$$$$$$$$6100                                       
+Abel                      $$$$$$$$$$11000                                       
+Hutton                    $$$$$$$$$$$8800                                       
+Taylor                    $$$$$$$$$$$8600                                       
+
+LAST_NAME                 SALARY                                                
+------------------------- ---------------                                       
+Livingston                $$$$$$$$$$$8400                                       
+Grant                     $$$$$$$$$$$7000                                       
+Johnson                   $$$$$$$$$$$6200                                       
+Taylor                    $$$$$$$$$$$3200                                       
+Fleaur                    $$$$$$$$$$$3100                                       
+Sullivan                  $$$$$$$$$$$2500                                       
+Geoni                     $$$$$$$$$$$2800                                       
+Sarchand                  $$$$$$$$$$$4200                                       
+Bull                      $$$$$$$$$$$4100                                       
+Dellinger                 $$$$$$$$$$$3400                                       
+Cabrio                    $$$$$$$$$$$3000                                       
+
+LAST_NAME                 SALARY                                                
+------------------------- ---------------                                       
+Chung                     $$$$$$$$$$$3800                                       
+Dilly                     $$$$$$$$$$$3600                                       
+Gates                     $$$$$$$$$$$2900                                       
+Perkins                   $$$$$$$$$$$2500                                       
+Bell                      $$$$$$$$$$$4000                                       
+Everett                   $$$$$$$$$$$3900                                       
+McCain                    $$$$$$$$$$$3200                                       
+Jones                     $$$$$$$$$$$2800                                       
+Walsh                     $$$$$$$$$$$3100                                       
+Feeney                    $$$$$$$$$$$3000                                       
+OConnell                  $$$$$$$$$$$2600                                       
+
+LAST_NAME                 SALARY                                                
+------------------------- ---------------                                       
+Grant                     $$$$$$$$$$$2600                                       
+Whalen                    $$$$$$$$$$$4400                                       
+Hartstein                 $$$$$$$$$$13000                                       
+Fay                       $$$$$$$$$$$6000                                       
+Mavris                    $$$$$$$$$$$6500                                       
+Baer                      $$$$$$$$$$10000                                       
+Higgins                   $$$$$$$$$$12000                                       
+Gietz                     $$$$$$$$$$$8300                                       
+
+107 rows selected.
+
+
+
+
+QUESTION 4:
+
+SQL> select last_name,hire_date, to_char(next_day(add_months(hire_date,6),'MONDAY'),'fmDAY," the" ddthsp " of " MONth," " YYYY') from employees;
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+King                      17-JUN-87                                             
+MONDAY, the twenty-first  of  DECEMBER,  1987                                   
+                                                                                
+Kochhar                   21-SEP-89                                             
+MONDAY, the twenty-sixth  of  MARCH,  1990                                      
+                                                                                
+De Haan                   13-JAN-93                                             
+MONDAY, the nineteenth  of  JULY,  1993                                         
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Hunold                    03-JAN-90                                             
+MONDAY, the ninth  of  JULY,  1990                                              
+                                                                                
+Ernst                     21-MAY-91                                             
+MONDAY, the twenty-fifth  of  NOVEMBER,  1991                                   
+                                                                                
+Austin                    25-JUN-97                                             
+MONDAY, the twenty-ninth  of  DECEMBER,  1997                                   
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Pataballa                 05-FEB-98                                             
+MONDAY, the tenth  of  AUGUST,  1998                                            
+                                                                                
+Lorentz                   07-FEB-99                                             
+MONDAY, the ninth  of  AUGUST,  1999                                            
+                                                                                
+Greenberg                 17-AUG-94                                             
+MONDAY, the twentieth  of  FEBRUARY,  1995                                      
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Faviet                    16-AUG-94                                             
+MONDAY, the twentieth  of  FEBRUARY,  1995                                      
+                                                                                
+Chen                      28-SEP-97                                             
+MONDAY, the thirtieth  of  MARCH,  1998                                         
+                                                                                
+Sciarra                   30-SEP-97                                             
+MONDAY, the sixth  of  APRIL,  1998                                             
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Urman                     07-MAR-98                                             
+MONDAY, the fourteenth  of  SEPTEMBER,  1998                                    
+                                                                                
+Popp                      07-DEC-99                                             
+MONDAY, the twelfth  of  JUNE,  2000                                            
+                                                                                
+Raphaely                  07-DEC-94                                             
+MONDAY, the twelfth  of  JUNE,  1995                                            
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Khoo                      18-MAY-95                                             
+MONDAY, the twentieth  of  NOVEMBER,  1995                                      
+                                                                                
+Baida                     24-DEC-97                                             
+MONDAY, the twenty-ninth  of  JUNE,  1998                                       
+                                                                                
+Tobias                    24-JUL-97                                             
+MONDAY, the twenty-sixth  of  JANUARY,  1998                                    
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Himuro                    15-NOV-98                                             
+MONDAY, the seventeenth  of  MAY,  1999                                         
+                                                                                
+Colmenares                10-AUG-99                                             
+MONDAY, the fourteenth  of  FEBRUARY,  2000                                     
+                                                                                
+Weiss                     18-JUL-96                                             
+MONDAY, the twentieth  of  JANUARY,  1997                                       
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Fripp                     10-APR-97                                             
+MONDAY, the thirteenth  of  OCTOBER,  1997                                      
+                                                                                
+Kaufling                  01-MAY-95                                             
+MONDAY, the sixth  of  NOVEMBER,  1995                                          
+                                                                                
+Vollman                   10-OCT-97                                             
+MONDAY, the thirteenth  of  APRIL,  1998                                        
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Mourgos                   16-NOV-99                                             
+MONDAY, the twenty-second  of  MAY,  2000                                       
+                                                                                
+Nayer                     16-JUL-97                                             
+MONDAY, the nineteenth  of  JANUARY,  1998                                      
+                                                                                
+Mikkilineni               28-SEP-98                                             
+MONDAY, the twenty-ninth  of  MARCH,  1999                                      
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Landry                    14-JAN-99                                             
+MONDAY, the nineteenth  of  JULY,  1999                                         
+                                                                                
+Markle                    08-MAR-00                                             
+MONDAY, the eleventh  of  SEPTEMBER,  2000                                      
+                                                                                
+Bissot                    20-AUG-97                                             
+MONDAY, the twenty-third  of  FEBRUARY,  1998                                   
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Atkinson                  30-OCT-97                                             
+MONDAY, the fourth  of  MAY,  1998                                              
+                                                                                
+Marlow                    16-FEB-97                                             
+MONDAY, the eighteenth  of  AUGUST,  1997                                       
+                                                                                
+Olson                     10-APR-99                                             
+MONDAY, the eleventh  of  OCTOBER,  1999                                        
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Mallin                    14-JUN-96                                             
+MONDAY, the sixteenth  of  DECEMBER,  1996                                      
+                                                                                
+Rogers                    26-AUG-98                                             
+MONDAY, the first  of  MARCH,  1999                                             
+                                                                                
+Gee                       12-DEC-99                                             
+MONDAY, the nineteenth  of  JUNE,  2000                                         
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Philtanker                06-FEB-00                                             
+MONDAY, the seventh  of  AUGUST,  2000                                          
+                                                                                
+Ladwig                    14-JUL-95                                             
+MONDAY, the fifteenth  of  JANUARY,  1996                                       
+                                                                                
+Stiles                    26-OCT-97                                             
+MONDAY, the twenty-seventh  of  APRIL,  1998                                    
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Seo                       12-FEB-98                                             
+MONDAY, the seventeenth  of  AUGUST,  1998                                      
+                                                                                
+Patel                     06-APR-98                                             
+MONDAY, the twelfth  of  OCTOBER,  1998                                         
+                                                                                
+Rajs                      17-OCT-95                                             
+MONDAY, the twenty-second  of  APRIL,  1996                                     
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Davies                    29-JAN-97                                             
+MONDAY, the fourth  of  AUGUST,  1997                                           
+                                                                                
+Matos                     15-MAR-98                                             
+MONDAY, the twenty-first  of  SEPTEMBER,  1998                                  
+                                                                                
+Vargas                    09-JUL-98                                             
+MONDAY, the eleventh  of  JANUARY,  1999                                        
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Russell                   01-OCT-96                                             
+MONDAY, the seventh  of  APRIL,  1997                                           
+                                                                                
+Partners                  05-JAN-97                                             
+MONDAY, the seventh  of  JULY,  1997                                            
+                                                                                
+Errazuriz                 10-MAR-97                                             
+MONDAY, the fifteenth  of  SEPTEMBER,  1997                                     
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Cambrault                 15-OCT-99                                             
+MONDAY, the seventeenth  of  APRIL,  2000                                       
+                                                                                
+Zlotkey                   29-JAN-00                                             
+MONDAY, the thirty-first  of  JULY,  2000                                       
+                                                                                
+Tucker                    30-JAN-97                                             
+MONDAY, the fourth  of  AUGUST,  1997                                           
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Bernstein                 24-MAR-97                                             
+MONDAY, the twenty-ninth  of  SEPTEMBER,  1997                                  
+                                                                                
+Hall                      20-AUG-97                                             
+MONDAY, the twenty-third  of  FEBRUARY,  1998                                   
+                                                                                
+Olsen                     30-MAR-98                                             
+MONDAY, the fifth  of  OCTOBER,  1998                                           
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Cambrault                 09-DEC-98                                             
+MONDAY, the fourteenth  of  JUNE,  1999                                         
+                                                                                
+Tuvault                   23-NOV-99                                             
+MONDAY, the twenty-ninth  of  MAY,  2000                                        
+                                                                                
+King                      30-JAN-96                                             
+MONDAY, the fifth  of  AUGUST,  1996                                            
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Sully                     04-MAR-96                                             
+MONDAY, the ninth  of  SEPTEMBER,  1996                                         
+                                                                                
+McEwen                    01-AUG-96                                             
+MONDAY, the third  of  FEBRUARY,  1997                                          
+                                                                                
+Smith                     10-MAR-97                                             
+MONDAY, the fifteenth  of  SEPTEMBER,  1997                                     
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Doran                     15-DEC-97                                             
+MONDAY, the twenty-second  of  JUNE,  1998                                      
+                                                                                
+Sewall                    03-NOV-98                                             
+MONDAY, the tenth  of  MAY,  1999                                               
+                                                                                
+Vishney                   11-NOV-97                                             
+MONDAY, the eighteenth  of  MAY,  1998                                          
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Greene                    19-MAR-99                                             
+MONDAY, the twentieth  of  SEPTEMBER,  1999                                     
+                                                                                
+Marvins                   24-JAN-00                                             
+MONDAY, the thirty-first  of  JULY,  2000                                       
+                                                                                
+Lee                       23-FEB-00                                             
+MONDAY, the twenty-eighth  of  AUGUST,  2000                                    
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Ande                      24-MAR-00                                             
+MONDAY, the twenty-fifth  of  SEPTEMBER,  2000                                  
+                                                                                
+Banda                     21-APR-00                                             
+MONDAY, the twenty-third  of  OCTOBER,  2000                                    
+                                                                                
+Ozer                      11-MAR-97                                             
+MONDAY, the fifteenth  of  SEPTEMBER,  1997                                     
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Bloom                     23-MAR-98                                             
+MONDAY, the twenty-eighth  of  SEPTEMBER,  1998                                 
+                                                                                
+Fox                       24-JAN-98                                             
+MONDAY, the twenty-seventh  of  JULY,  1998                                     
+                                                                                
+Smith                     23-FEB-99                                             
+MONDAY, the thirtieth  of  AUGUST,  1999                                        
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Bates                     24-MAR-99                                             
+MONDAY, the twenty-seventh  of  SEPTEMBER,  1999                                
+                                                                                
+Kumar                     21-APR-00                                             
+MONDAY, the twenty-third  of  OCTOBER,  2000                                    
+                                                                                
+Abel                      11-MAY-96                                             
+MONDAY, the eighteenth  of  NOVEMBER,  1996                                     
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Hutton                    19-MAR-97                                             
+MONDAY, the twenty-second  of  SEPTEMBER,  1997                                 
+                                                                                
+Taylor                    24-MAR-98                                             
+MONDAY, the twenty-eighth  of  SEPTEMBER,  1998                                 
+                                                                                
+Livingston                23-APR-98                                             
+MONDAY, the twenty-sixth  of  OCTOBER,  1998                                    
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Grant                     24-MAY-99                                             
+MONDAY, the twenty-ninth  of  NOVEMBER,  1999                                   
+                                                                                
+Johnson                   04-JAN-00                                             
+MONDAY, the tenth  of  JULY,  2000                                              
+                                                                                
+Taylor                    24-JAN-98                                             
+MONDAY, the twenty-seventh  of  JULY,  1998                                     
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Fleaur                    23-FEB-98                                             
+MONDAY, the twenty-fourth  of  AUGUST,  1998                                    
+                                                                                
+Sullivan                  21-JUN-99                                             
+MONDAY, the twenty-seventh  of  DECEMBER,  1999                                 
+                                                                                
+Geoni                     03-FEB-00                                             
+MONDAY, the seventh  of  AUGUST,  2000                                          
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Sarchand                  27-JAN-96                                             
+MONDAY, the twenty-ninth  of  JULY,  1996                                       
+                                                                                
+Bull                      20-FEB-97                                             
+MONDAY, the twenty-fifth  of  AUGUST,  1997                                     
+                                                                                
+Dellinger                 24-JUN-98                                             
+MONDAY, the twenty-eighth  of  DECEMBER,  1998                                  
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Cabrio                    07-FEB-99                                             
+MONDAY, the ninth  of  AUGUST,  1999                                            
+                                                                                
+Chung                     14-JUN-97                                             
+MONDAY, the fifteenth  of  DECEMBER,  1997                                      
+                                                                                
+Dilly                     13-AUG-97                                             
+MONDAY, the sixteenth  of  FEBRUARY,  1998                                      
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Gates                     11-JUL-98                                             
+MONDAY, the eighteenth  of  JANUARY,  1999                                      
+                                                                                
+Perkins                   19-DEC-99                                             
+MONDAY, the twenty-sixth  of  JUNE,  2000                                       
+                                                                                
+Bell                      04-FEB-96                                             
+MONDAY, the fifth  of  AUGUST,  1996                                            
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Everett                   03-MAR-97                                             
+MONDAY, the eighth  of  SEPTEMBER,  1997                                        
+                                                                                
+McCain                    01-JUL-98                                             
+MONDAY, the fourth  of  JANUARY,  1999                                          
+                                                                                
+Jones                     17-MAR-99                                             
+MONDAY, the twentieth  of  SEPTEMBER,  1999                                     
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Walsh                     24-APR-98                                             
+MONDAY, the twenty-sixth  of  OCTOBER,  1998                                    
+                                                                                
+Feeney                    23-MAY-98                                             
+MONDAY, the thirtieth  of  NOVEMBER,  1998                                      
+                                                                                
+OConnell                  21-JUN-99                                             
+MONDAY, the twenty-seventh  of  DECEMBER,  1999                                 
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Grant                     13-JAN-00                                             
+MONDAY, the seventeenth  of  JULY,  2000                                        
+                                                                                
+Whalen                    17-SEP-87                                             
+MONDAY, the twenty-first  of  MARCH,  1988                                      
+                                                                                
+Hartstein                 17-FEB-96                                             
+MONDAY, the nineteenth  of  AUGUST,  1996                                       
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Fay                       17-AUG-97                                             
+MONDAY, the twenty-third  of  FEBRUARY,  1998                                   
+                                                                                
+Mavris                    07-JUN-94                                             
+MONDAY, the twelfth  of  DECEMBER,  1994                                        
+                                                                                
+Baer                      07-JUN-94                                             
+MONDAY, the twelfth  of  DECEMBER,  1994                                        
+                                                                                
+
+LAST_NAME                 HIRE_DATE                                             
+------------------------- ---------                                             
+TO_CHAR(NEXT_DAY(ADD_MONTHS(HIRE_DATE,6),'MONDAY'),                             
+---------------------------------------------------                             
+Higgins                   07-JUN-94                                             
+MONDAY, the twelfth  of  DECEMBER,  1994                                        
+                                                                                
+Gietz                     07-JUN-94                                             
+MONDAY, the twelfth  of  DECEMBER,  1994                                        
+                                                                                
+
+107 rows selected.
+
+
+
+
+QUESTION 5:
+
+SQL> select last_name,hire_date,to_char(hire_date,'day') DAY from employees order by to_number(to_char(hire_date-1,'d'));
+
+LAST_NAME                 HIRE_DATE DAY                                         
+------------------------- --------- ---------                                   
+Kaufling                  01-MAY-95 monday                                      
+OConnell                  21-JUN-99 monday                                      
+Patel                     06-APR-98 monday                                      
+Errazuriz                 10-MAR-97 monday                                      
+Bernstein                 24-MAR-97 monday                                      
+Olsen                     30-MAR-98 monday                                      
+Sully                     04-MAR-96 monday                                      
+Smith                     10-MAR-97 monday                                      
+Doran                     15-DEC-97 monday                                      
+Marvins                   24-JAN-00 monday                                      
+Bloom                     23-MAR-98 monday                                      
+
+LAST_NAME                 HIRE_DATE DAY                                         
+------------------------- --------- ---------                                   
+Grant                     24-MAY-99 monday                                      
+Fleaur                    23-FEB-98 monday                                      
+Sullivan                  21-JUN-99 monday                                      
+Everett                   03-MAR-97 monday                                      
+Mikkilineni               28-SEP-98 monday                                      
+Ernst                     21-MAY-91 tuesday                                     
+Faviet                    16-AUG-94 tuesday                                     
+Sciarra                   30-SEP-97 tuesday                                     
+Popp                      07-DEC-99 tuesday                                     
+Colmenares                10-AUG-99 tuesday                                     
+Mourgos                   16-NOV-99 tuesday                                     
+
+LAST_NAME                 HIRE_DATE DAY                                         
+------------------------- --------- ---------                                   
+Rajs                      17-OCT-95 tuesday                                     
+Russell                   01-OCT-96 tuesday                                     
+Tuvault                   23-NOV-99 tuesday                                     
+King                      30-JAN-96 tuesday                                     
+Sewall                    03-NOV-98 tuesday                                     
+Vishney                   11-NOV-97 tuesday                                     
+Ozer                      11-MAR-97 tuesday                                     
+Smith                     23-FEB-99 tuesday                                     
+Taylor                    24-MAR-98 tuesday                                     
+Johnson                   04-JAN-00 tuesday                                     
+Mavris                    07-JUN-94 tuesday                                     
+
+LAST_NAME                 HIRE_DATE DAY                                         
+------------------------- --------- ---------                                   
+Baer                      07-JUN-94 tuesday                                     
+Higgins                   07-JUN-94 tuesday                                     
+Gietz                     07-JUN-94 tuesday                                     
+King                      17-JUN-87 wednesday                                   
+De Haan                   13-JAN-93 wednesday                                   
+Hunold                    03-JAN-90 wednesday                                   
+Austin                    25-JUN-97 wednesday                                   
+Greenberg                 17-AUG-94 wednesday                                   
+Raphaely                  07-DEC-94 wednesday                                   
+Baida                     24-DEC-97 wednesday                                   
+Nayer                     16-JUL-97 wednesday                                   
+
+LAST_NAME                 HIRE_DATE DAY                                         
+------------------------- --------- ---------                                   
+Markle                    08-MAR-00 wednesday                                   
+Bissot                    20-AUG-97 wednesday                                   
+Rogers                    26-AUG-98 wednesday                                   
+Davies                    29-JAN-97 wednesday                                   
+Hall                      20-AUG-97 wednesday                                   
+Cambrault                 09-DEC-98 wednesday                                   
+Lee                       23-FEB-00 wednesday                                   
+Bates                     24-MAR-99 wednesday                                   
+Hutton                    19-MAR-97 wednesday                                   
+Dellinger                 24-JUN-98 wednesday                                   
+Dilly                     13-AUG-97 wednesday                                   
+
+LAST_NAME                 HIRE_DATE DAY                                         
+------------------------- --------- ---------                                   
+McCain                    01-JUL-98 wednesday                                   
+Jones                     17-MAR-99 wednesday                                   
+Kochhar                   21-SEP-89 thursday                                    
+Pataballa                 05-FEB-98 thursday                                    
+Khoo                      18-MAY-95 thursday                                    
+Tobias                    24-JUL-97 thursday                                    
+Weiss                     18-JUL-96 thursday                                    
+Fripp                     10-APR-97 thursday                                    
+Landry                    14-JAN-99 thursday                                    
+Atkinson                  30-OCT-97 thursday                                    
+Seo                       12-FEB-98 thursday                                    
+
+LAST_NAME                 HIRE_DATE DAY                                         
+------------------------- --------- ---------                                   
+Vargas                    09-JUL-98 thursday                                    
+Tucker                    30-JAN-97 thursday                                    
+McEwen                    01-AUG-96 thursday                                    
+Livingston                23-APR-98 thursday                                    
+Geoni                     03-FEB-00 thursday                                    
+Bull                      20-FEB-97 thursday                                    
+Grant                     13-JAN-00 thursday                                    
+Whalen                    17-SEP-87 thursday                                    
+Vollman                   10-OCT-97 friday                                      
+Mallin                    14-JUN-96 friday                                      
+Ladwig                    14-JUL-95 friday                                      
+
+LAST_NAME                 HIRE_DATE DAY                                         
+------------------------- --------- ---------                                   
+Cambrault                 15-OCT-99 friday                                      
+Greene                    19-MAR-99 friday                                      
+Ande                      24-MAR-00 friday                                      
+Banda                     21-APR-00 friday                                      
+Kumar                     21-APR-00 friday                                      
+Walsh                     24-APR-98 friday                                      
+Urman                     07-MAR-98 saturday                                    
+Olson                     10-APR-99 saturday                                    
+Zlotkey                   29-JAN-00 saturday                                    
+Fox                       24-JAN-98 saturday                                    
+Abel                      11-MAY-96 saturday                                    
+
+LAST_NAME                 HIRE_DATE DAY                                         
+------------------------- --------- ---------                                   
+Taylor                    24-JAN-98 saturday                                    
+Sarchand                  27-JAN-96 saturday                                    
+Chung                     14-JUN-97 saturday                                    
+Gates                     11-JUL-98 saturday                                    
+Feeney                    23-MAY-98 saturday                                    
+Hartstein                 17-FEB-96 saturday                                    
+Lorentz                   07-FEB-99 sunday                                      
+Chen                      28-SEP-97 sunday                                      
+Himuro                    15-NOV-98 sunday                                      
+Marlow                    16-FEB-97 sunday                                      
+Gee                       12-DEC-99 sunday                                      
+
+LAST_NAME                 HIRE_DATE DAY                                         
+------------------------- --------- ---------                                   
+Philtanker                06-FEB-00 sunday                                      
+Stiles                    26-OCT-97 sunday                                      
+Matos                     15-MAR-98 sunday                                      
+Partners                  05-JAN-97 sunday                                      
+Cabrio                    07-FEB-99 sunday                                      
+Perkins                   19-DEC-99 sunday                                      
+Bell                      04-FEB-96 sunday                                      
+Fay                       17-AUG-97 sunday                                      
+
+107 rows selected.
+
+
+
+
+QUESTION 6:
+
+SQL> select last_name,case nvl(commission_pct,0)
+  2  when 0 then 'No Commision'
+  3  else
+  4  to_char(commission_pct) end "COMM"
+  5  from employees;
+
+LAST_NAME                 COMM                                                  
+------------------------- ----------------------------------------              
+King                      No Commision                                          
+Kochhar                   No Commision                                          
+De Haan                   No Commision                                          
+Hunold                    No Commision                                          
+Ernst                     No Commision                                          
+Austin                    No Commision                                          
+Pataballa                 No Commision                                          
+Lorentz                   No Commision                                          
+Greenberg                 No Commision                                          
+Faviet                    No Commision                                          
+Chen                      No Commision                                          
+
+LAST_NAME                 COMM                                                  
+------------------------- ----------------------------------------              
+Sciarra                   No Commision                                          
+Urman                     No Commision                                          
+Popp                      No Commision                                          
+Raphaely                  No Commision                                          
+Khoo                      No Commision                                          
+Baida                     No Commision                                          
+Tobias                    No Commision                                          
+Himuro                    No Commision                                          
+Colmenares                No Commision                                          
+Weiss                     No Commision                                          
+Fripp                     No Commision                                          
+
+LAST_NAME                 COMM                                                  
+------------------------- ----------------------------------------              
+Kaufling                  No Commision                                          
+Vollman                   No Commision                                          
+Mourgos                   No Commision                                          
+Nayer                     No Commision                                          
+Mikkilineni               No Commision                                          
+Landry                    No Commision                                          
+Markle                    No Commision                                          
+Bissot                    No Commision                                          
+Atkinson                  No Commision                                          
+Marlow                    No Commision                                          
+Olson                     No Commision                                          
+
+LAST_NAME                 COMM                                                  
+------------------------- ----------------------------------------              
+Mallin                    No Commision                                          
+Rogers                    No Commision                                          
+Gee                       No Commision                                          
+Philtanker                No Commision                                          
+Ladwig                    No Commision                                          
+Stiles                    No Commision                                          
+Seo                       No Commision                                          
+Patel                     No Commision                                          
+Rajs                      No Commision                                          
+Davies                    No Commision                                          
+Matos                     No Commision                                          
+
+LAST_NAME                 COMM                                                  
+------------------------- ----------------------------------------              
+Vargas                    No Commision                                          
+Russell                   .4                                                    
+Partners                  .3                                                    
+Errazuriz                 .3                                                    
+Cambrault                 .3                                                    
+Zlotkey                   .2                                                    
+Tucker                    .3                                                    
+Bernstein                 .25                                                   
+Hall                      .25                                                   
+Olsen                     .2                                                    
+Cambrault                 .2                                                    
+
+LAST_NAME                 COMM                                                  
+------------------------- ----------------------------------------              
+Tuvault                   .15                                                   
+King                      .35                                                   
+Sully                     .35                                                   
+McEwen                    .35                                                   
+Smith                     .3                                                    
+Doran                     .3                                                    
+Sewall                    .25                                                   
+Vishney                   .25                                                   
+Greene                    .15                                                   
+Marvins                   .1                                                    
+Lee                       .1                                                    
+
+LAST_NAME                 COMM                                                  
+------------------------- ----------------------------------------              
+Ande                      .1                                                    
+Banda                     .1                                                    
+Ozer                      .25                                                   
+Bloom                     .2                                                    
+Fox                       .2                                                    
+Smith                     .15                                                   
+Bates                     .15                                                   
+Kumar                     .1                                                    
+Abel                      .3                                                    
+Hutton                    .25                                                   
+Taylor                    .2                                                    
+
+LAST_NAME                 COMM                                                  
+------------------------- ----------------------------------------              
+Livingston                .2                                                    
+Grant                     .15                                                   
+Johnson                   .1                                                    
+Taylor                    No Commision                                          
+Fleaur                    No Commision                                          
+Sullivan                  No Commision                                          
+Geoni                     No Commision                                          
+Sarchand                  No Commision                                          
+Bull                      No Commision                                          
+Dellinger                 No Commision                                          
+Cabrio                    No Commision                                          
+
+LAST_NAME                 COMM                                                  
+------------------------- ----------------------------------------              
+Chung                     No Commision                                          
+Dilly                     No Commision                                          
+Gates                     No Commision                                          
+Perkins                   No Commision                                          
+Bell                      No Commision                                          
+Everett                   No Commision                                          
+McCain                    No Commision                                          
+Jones                     No Commision                                          
+Walsh                     No Commision                                          
+Feeney                    No Commision                                          
+OConnell                  No Commision                                          
+
+LAST_NAME                 COMM                                                  
+------------------------- ----------------------------------------              
+Grant                     No Commision                                          
+Whalen                    No Commision                                          
+Hartstein                 No Commision                                          
+Fay                       No Commision                                          
+Mavris                    No Commision                                          
+Baer                      No Commision                                          
+Higgins                   No Commision                                          
+Gietz                     No Commision                                          
+
+107 rows selected.
+
+
+
+
+QUESTION 7:
+
+SQL> select job_id, case job_id
+  2  when 'AD_PRES' then 'A'
+  3  when 'ST_MAN' then 'B'
+  4  when 'IT_PROG' then 'C'
+  5  when 'SA_REP' then 'D'
+  6  when 'ST_CLERK' then 'E'
+  7  else
+  8  '0' end "GRADE" from employees;
+
+JOB_ID     G                                                                    
+---------- -                                                                    
+AC_ACCOUNT 0                                                                    
+AC_MGR     0                                                                    
+AD_ASST    0                                                                    
+AD_PRES    A                                                                    
+AD_VP      0                                                                    
+AD_VP      0                                                                    
+FI_ACCOUNT 0                                                                    
+FI_ACCOUNT 0                                                                    
+FI_ACCOUNT 0                                                                    
+FI_ACCOUNT 0                                                                    
+FI_ACCOUNT 0                                                                    
+
+JOB_ID     G                                                                    
+---------- -                                                                    
+FI_MGR     0                                                                    
+HR_REP     0                                                                    
+IT_PROG    C                                                                    
+IT_PROG    C                                                                    
+IT_PROG    C                                                                    
+IT_PROG    C                                                                    
+IT_PROG    C                                                                    
+MK_MAN     0                                                                    
+MK_REP     0                                                                    
+PR_REP     0                                                                    
+PU_CLERK   0                                                                    
+
+JOB_ID     G                                                                    
+---------- -                                                                    
+PU_CLERK   0                                                                    
+PU_CLERK   0                                                                    
+PU_CLERK   0                                                                    
+PU_CLERK   0                                                                    
+PU_MAN     0                                                                    
+SA_MAN     0                                                                    
+SA_MAN     0                                                                    
+SA_MAN     0                                                                    
+SA_MAN     0                                                                    
+SA_MAN     0                                                                    
+SA_REP     D                                                                    
+
+JOB_ID     G                                                                    
+---------- -                                                                    
+SA_REP     D                                                                    
+SA_REP     D                                                                    
+SA_REP     D                                                                    
+SA_REP     D                                                                    
+SA_REP     D                                                                    
+SA_REP     D                                                                    
+SA_REP     D                                                                    
+SA_REP     D                                                                    
+SA_REP     D                                                                    
+SA_REP     D                                                                    
+SA_REP     D                                                                    
+
+JOB_ID     G                                                                    
+---------- -                                                                    
+SA_REP     D                                                                    
+SA_REP     D                                                                    
+SA_REP     D                                                                    
+SA_REP     D                                                                    
+SA_REP     D                                                                    
+SA_REP     D                                                                    
+SA_REP     D                                                                    
+SA_REP     D                                                                    
+SA_REP     D                                                                    
+SA_REP     D                                                                    
+SA_REP     D                                                                    
+
+JOB_ID     G                                                                    
+---------- -                                                                    
+SA_REP     D                                                                    
+SA_REP     D                                                                    
+SA_REP     D                                                                    
+SA_REP     D                                                                    
+SA_REP     D                                                                    
+SA_REP     D                                                                    
+SA_REP     D                                                                    
+SH_CLERK   0                                                                    
+SH_CLERK   0                                                                    
+SH_CLERK   0                                                                    
+SH_CLERK   0                                                                    
+
+JOB_ID     G                                                                    
+---------- -                                                                    
+SH_CLERK   0                                                                    
+SH_CLERK   0                                                                    
+SH_CLERK   0                                                                    
+SH_CLERK   0                                                                    
+SH_CLERK   0                                                                    
+SH_CLERK   0                                                                    
+SH_CLERK   0                                                                    
+SH_CLERK   0                                                                    
+SH_CLERK   0                                                                    
+SH_CLERK   0                                                                    
+SH_CLERK   0                                                                    
+
+JOB_ID     G                                                                    
+---------- -                                                                    
+SH_CLERK   0                                                                    
+SH_CLERK   0                                                                    
+SH_CLERK   0                                                                    
+SH_CLERK   0                                                                    
+SH_CLERK   0                                                                    
+ST_CLERK   E                                                                    
+ST_CLERK   E                                                                    
+ST_CLERK   E                                                                    
+ST_CLERK   E                                                                    
+ST_CLERK   E                                                                    
+ST_CLERK   E                                                                    
+
+JOB_ID     G                                                                    
+---------- -                                                                    
+ST_CLERK   E                                                                    
+ST_CLERK   E                                                                    
+ST_CLERK   E                                                                    
+ST_CLERK   E                                                                    
+ST_CLERK   E                                                                    
+ST_CLERK   E                                                                    
+ST_CLERK   E                                                                    
+ST_CLERK   E                                                                    
+ST_CLERK   E                                                                    
+ST_CLERK   E                                                                    
+ST_CLERK   E                                                                    
+
+JOB_ID     G                                                                    
+---------- -                                                                    
+ST_CLERK   E                                                                    
+ST_CLERK   E                                                                    
+ST_CLERK   E                                                                    
+ST_MAN     B                                                                    
+ST_MAN     B                                                                    
+ST_MAN     B                                                                    
+ST_MAN     B                                                                    
+ST_MAN     B                                                                    
+
+107 rows selected.
+
+
+
+
+QUESTION 8:
+
+SQL> select last_name "Employees",lpad(' ',((salary/1000)*12)+1,'*') "Salaries" from employees order by salary desc;
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+King                                                                            
+********************************************************************************
+********************************************************************************
+********************************************************************************
+************************************************                                
+                                                                                
+Kochhar                                                                         
+********************************************************************************
+********************************************************************************
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+********************************************                                    
+                                                                                
+De Haan                                                                         
+********************************************************************************
+********************************************************************************
+********************************************                                    
+                                                                                
+Russell                                                                         
+********************************************************************************
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+********************************************************************************
+********                                                                        
+                                                                                
+Partners                                                                        
+********************************************************************************
+********************************************************************************
+**                                                                              
+                                                                                
+Hartstein                                                                       
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+********************************************************************************
+****************************************************************************    
+                                                                                
+Higgins                                                                         
+********************************************************************************
+****************************************************************                
+                                                                                
+Greenberg                                                                       
+********************************************************************************
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+****************************************************************                
+                                                                                
+Errazuriz                                                                       
+********************************************************************************
+****************************************************************                
+                                                                                
+Ozer                                                                            
+********************************************************************************
+**********************************************************                      
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+                                                                                
+Cambrault                                                                       
+********************************************************************************
+****************************************************                            
+                                                                                
+Abel                                                                            
+********************************************************************************
+****************************************************                            
+                                                                                
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+Raphaely                                                                        
+********************************************************************************
+****************************************************                            
+                                                                                
+Vishney                                                                         
+********************************************************************************
+**********************************************                                  
+                                                                                
+Zlotkey                                                                         
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+********************************************************************************
+**********************************************                                  
+                                                                                
+Bloom                                                                           
+********************************************************************************
+****************************************                                        
+                                                                                
+King                                                                            
+********************************************************************************
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+****************************************                                        
+                                                                                
+Tucker                                                                          
+********************************************************************************
+****************************************                                        
+                                                                                
+Baer                                                                            
+********************************************************************************
+****************************************                                        
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+                                                                                
+Fox                                                                             
+********************************************************************************
+***********************************                                             
+                                                                                
+Bernstein                                                                       
+********************************************************************************
+**********************************                                              
+                                                                                
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+Sully                                                                           
+********************************************************************************
+**********************************                                              
+                                                                                
+Greene                                                                          
+********************************************************************************
+**********************************                                              
+                                                                                
+Hunold                                                                          
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+********************************************************************************
+****************************                                                    
+                                                                                
+Faviet                                                                          
+********************************************************************************
+****************************                                                    
+                                                                                
+Hall                                                                            
+********************************************************************************
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+****************************                                                    
+                                                                                
+McEwen                                                                          
+********************************************************************************
+****************************                                                    
+                                                                                
+Hutton                                                                          
+********************************************************************************
+*************************                                                       
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+                                                                                
+Taylor                                                                          
+********************************************************************************
+***********************                                                         
+                                                                                
+Livingston                                                                      
+********************************************************************************
+********************                                                            
+                                                                                
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+Gietz                                                                           
+********************************************************************************
+*******************                                                             
+                                                                                
+Chen                                                                            
+********************************************************************************
+******************                                                              
+                                                                                
+Fripp                                                                           
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+********************************************************************************
+******************                                                              
+                                                                                
+Weiss                                                                           
+********************************************************************************
+****************                                                                
+                                                                                
+Olsen                                                                           
+********************************************************************************
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+****************                                                                
+                                                                                
+Smith                                                                           
+********************************************************************************
+****************                                                                
+                                                                                
+Kaufling                                                                        
+********************************************************************************
+**************                                                                  
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+                                                                                
+Urman                                                                           
+********************************************************************************
+*************                                                                   
+                                                                                
+Sciarra                                                                         
+********************************************************************************
+************                                                                    
+                                                                                
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+Doran                                                                           
+********************************************************************************
+**********                                                                      
+                                                                                
+Cambrault                                                                       
+********************************************************************************
+**********                                                                      
+                                                                                
+Smith                                                                           
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+********************************************************************************
+********                                                                        
+                                                                                
+Bates                                                                           
+********************************************************************************
+*******                                                                         
+                                                                                
+Marvins                                                                         
+********************************************************************************
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+******                                                                          
+                                                                                
+Tuvault                                                                         
+********************************************************************************
+****                                                                            
+                                                                                
+Sewall                                                                          
+********************************************************************************
+****                                                                            
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+                                                                                
+Grant                                                                           
+********************************************************************************
+****                                                                            
+                                                                                
+Popp                                                                            
+********************************************************************************
+**                                                                              
+                                                                                
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+Lee                                                                             
+********************************************************************************
+*                                                                               
+                                                                                
+Vollman                                                                         
+******************************************************************************  
+                                                                                
+Mavris                                                                          
+******************************************************************************  
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+                                                                                
+Ande                                                                            
+****************************************************************************    
+                                                                                
+Banda                                                                           
+**************************************************************************      
+                                                                                
+Johnson                                                                         
+**************************************************************************      
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+                                                                                
+Kumar                                                                           
+*************************************************************************       
+                                                                                
+Fay                                                                             
+************************************************************************        
+                                                                                
+Ernst                                                                           
+************************************************************************        
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+                                                                                
+Mourgos                                                                         
+*********************************************************************           
+                                                                                
+Pataballa                                                                       
+*********************************************************                       
+                                                                                
+Austin                                                                          
+*********************************************************                       
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+                                                                                
+Whalen                                                                          
+****************************************************                            
+                                                                                
+Lorentz                                                                         
+**************************************************                              
+                                                                                
+Sarchand                                                                        
+**************************************************                              
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+                                                                                
+Bull                                                                            
+*************************************************                               
+                                                                                
+Bell                                                                            
+************************************************                                
+                                                                                
+Everett                                                                         
+**********************************************                                  
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+                                                                                
+Chung                                                                           
+*********************************************                                   
+                                                                                
+Ladwig                                                                          
+*******************************************                                     
+                                                                                
+Dilly                                                                           
+*******************************************                                     
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+                                                                                
+Rajs                                                                            
+******************************************                                      
+                                                                                
+Dellinger                                                                       
+****************************************                                        
+                                                                                
+Mallin                                                                          
+***************************************                                         
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+                                                                                
+Bissot                                                                          
+***************************************                                         
+                                                                                
+McCain                                                                          
+**************************************                                          
+                                                                                
+Nayer                                                                           
+**************************************                                          
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+                                                                                
+Stiles                                                                          
+**************************************                                          
+                                                                                
+Taylor                                                                          
+**************************************                                          
+                                                                                
+Fleaur                                                                          
+*************************************                                           
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+                                                                                
+Walsh                                                                           
+*************************************                                           
+                                                                                
+Davies                                                                          
+*************************************                                           
+                                                                                
+Khoo                                                                            
+*************************************                                           
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+                                                                                
+Feeney                                                                          
+************************************                                            
+                                                                                
+Cabrio                                                                          
+************************************                                            
+                                                                                
+Gates                                                                           
+**********************************                                              
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+                                                                                
+Baida                                                                           
+**********************************                                              
+                                                                                
+Rogers                                                                          
+**********************************                                              
+                                                                                
+Jones                                                                           
+*********************************                                               
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+                                                                                
+Tobias                                                                          
+*********************************                                               
+                                                                                
+Geoni                                                                           
+*********************************                                               
+                                                                                
+Atkinson                                                                        
+*********************************                                               
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+                                                                                
+Seo                                                                             
+********************************                                                
+                                                                                
+Mikkilineni                                                                     
+********************************                                                
+                                                                                
+OConnell                                                                        
+*******************************                                                 
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+                                                                                
+Grant                                                                           
+*******************************                                                 
+                                                                                
+Himuro                                                                          
+*******************************                                                 
+                                                                                
+Matos                                                                           
+*******************************                                                 
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+                                                                                
+Patel                                                                           
+******************************                                                  
+                                                                                
+Colmenares                                                                      
+******************************                                                  
+                                                                                
+Sullivan                                                                        
+******************************                                                  
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+                                                                                
+Marlow                                                                          
+******************************                                                  
+                                                                                
+Vargas                                                                          
+******************************                                                  
+                                                                                
+Perkins                                                                         
+******************************                                                  
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+                                                                                
+Landry                                                                          
+****************************                                                    
+                                                                                
+Gee                                                                             
+****************************                                                    
+                                                                                
+Markle                                                                          
+**************************                                                      
+
+Employees                                                                       
+-------------------------                                                       
+Salaries                                                                        
+--------------------------------------------------------------------------------
+                                                                                
+Philtanker                                                                      
+**************************                                                      
+                                                                                
+Olson                                                                           
+*************************                                                       
+                                                                                
+
+107 rows selected.
+
+
+
+
+QUESTION 9:
+
+SQL> select * from employees where to_char(hire_date,'DY')='MON';
+
+EMPLOYEE_ID FIRST_NAME           LAST_NAME                                      
+----------- -------------------- -------------------------                      
+EMAIL                     PHONE_NUMBER         HIRE_DATE JOB_ID         SALARY  
+------------------------- -------------------- --------- ---------- ----------  
+COMMISSION_PCT MANAGER_ID DEPARTMENT_ID                                         
+-------------- ---------- -------------                                         
+        122 Payam                Kaufling                                       
+PKAUFLIN                  650.123.3234         01-MAY-95 ST_MAN           7900  
+                      100            50                                         
+                                                                                
+        126 Irene                Mikkilineni                                    
+IMIKKILI                  650.124.1224         28-SEP-98 ST_CLERK         2700  
+                      120            50                                         
+
+EMPLOYEE_ID FIRST_NAME           LAST_NAME                                      
+----------- -------------------- -------------------------                      
+EMAIL                     PHONE_NUMBER         HIRE_DATE JOB_ID         SALARY  
+------------------------- -------------------- --------- ---------- ----------  
+COMMISSION_PCT MANAGER_ID DEPARTMENT_ID                                         
+-------------- ---------- -------------                                         
+                                                                                
+        140 Joshua               Patel                                          
+JPATEL                    650.121.1834         06-APR-98 ST_CLERK         2500  
+                      123            50                                         
+                                                                                
+        147 Alberto              Errazuriz                                      
+AERRAZUR                  011.44.1344.429278   10-MAR-97 SA_MAN          12000  
+
+EMPLOYEE_ID FIRST_NAME           LAST_NAME                                      
+----------- -------------------- -------------------------                      
+EMAIL                     PHONE_NUMBER         HIRE_DATE JOB_ID         SALARY  
+------------------------- -------------------- --------- ---------- ----------  
+COMMISSION_PCT MANAGER_ID DEPARTMENT_ID                                         
+-------------- ---------- -------------                                         
+            .3        100            80                                         
+                                                                                
+        151 David                Bernstein                                      
+DBERNSTE                  011.44.1344.345268   24-MAR-97 SA_REP           9500  
+           .25        145            80                                         
+                                                                                
+        153 Christopher          Olsen                                          
+
+EMPLOYEE_ID FIRST_NAME           LAST_NAME                                      
+----------- -------------------- -------------------------                      
+EMAIL                     PHONE_NUMBER         HIRE_DATE JOB_ID         SALARY  
+------------------------- -------------------- --------- ---------- ----------  
+COMMISSION_PCT MANAGER_ID DEPARTMENT_ID                                         
+-------------- ---------- -------------                                         
+COLSEN                    011.44.1344.498718   30-MAR-98 SA_REP           8000  
+            .2        145            80                                         
+                                                                                
+        157 Patrick              Sully                                          
+PSULLY                    011.44.1345.929268   04-MAR-96 SA_REP           9500  
+           .35        146            80                                         
+                                                                                
+
+EMPLOYEE_ID FIRST_NAME           LAST_NAME                                      
+----------- -------------------- -------------------------                      
+EMAIL                     PHONE_NUMBER         HIRE_DATE JOB_ID         SALARY  
+------------------------- -------------------- --------- ---------- ----------  
+COMMISSION_PCT MANAGER_ID DEPARTMENT_ID                                         
+-------------- ---------- -------------                                         
+        159 Lindsey              Smith                                          
+LSMITH                    011.44.1345.729268   10-MAR-97 SA_REP           8000  
+            .3        146            80                                         
+                                                                                
+        160 Louise               Doran                                          
+LDORAN                    011.44.1345.629268   15-DEC-97 SA_REP           7500  
+            .3        146            80                                         
+
+EMPLOYEE_ID FIRST_NAME           LAST_NAME                                      
+----------- -------------------- -------------------------                      
+EMAIL                     PHONE_NUMBER         HIRE_DATE JOB_ID         SALARY  
+------------------------- -------------------- --------- ---------- ----------  
+COMMISSION_PCT MANAGER_ID DEPARTMENT_ID                                         
+-------------- ---------- -------------                                         
+                                                                                
+        164 Mattea               Marvins                                        
+MMARVINS                  011.44.1346.329268   24-JAN-00 SA_REP           7200  
+            .1        147            80                                         
+                                                                                
+        169 Harrison             Bloom                                          
+HBLOOM                    011.44.1343.829268   23-MAR-98 SA_REP          10000  
+
+EMPLOYEE_ID FIRST_NAME           LAST_NAME                                      
+----------- -------------------- -------------------------                      
+EMAIL                     PHONE_NUMBER         HIRE_DATE JOB_ID         SALARY  
+------------------------- -------------------- --------- ---------- ----------  
+COMMISSION_PCT MANAGER_ID DEPARTMENT_ID                                         
+-------------- ---------- -------------                                         
+            .2        148            80                                         
+                                                                                
+        178 Kimberely            Grant                                          
+KGRANT                    011.44.1644.429263   24-MAY-99 SA_REP           7000  
+           .15        149                                                       
+                                                                                
+        181 Jean                 Fleaur                                         
+
+EMPLOYEE_ID FIRST_NAME           LAST_NAME                                      
+----------- -------------------- -------------------------                      
+EMAIL                     PHONE_NUMBER         HIRE_DATE JOB_ID         SALARY  
+------------------------- -------------------- --------- ---------- ----------  
+COMMISSION_PCT MANAGER_ID DEPARTMENT_ID                                         
+-------------- ---------- -------------                                         
+JFLEAUR                   650.507.9877         23-FEB-98 SH_CLERK         3100  
+                      120            50                                         
+                                                                                
+        182 Martha               Sullivan                                       
+MSULLIVA                  650.507.9878         21-JUN-99 SH_CLERK         2500  
+                      120            50                                         
+                                                                                
+
+EMPLOYEE_ID FIRST_NAME           LAST_NAME                                      
+----------- -------------------- -------------------------                      
+EMAIL                     PHONE_NUMBER         HIRE_DATE JOB_ID         SALARY  
+------------------------- -------------------- --------- ---------- ----------  
+COMMISSION_PCT MANAGER_ID DEPARTMENT_ID                                         
+-------------- ---------- -------------                                         
+        193 Britney              Everett                                        
+BEVERETT                  650.501.2876         03-MAR-97 SH_CLERK         3900  
+                      123            50                                         
+                                                                                
+        198 Donald               OConnell                                       
+DOCONNEL                  650.507.9833         21-JUN-99 SH_CLERK         2600  
+                      124            50                                         
+
+EMPLOYEE_ID FIRST_NAME           LAST_NAME                                      
+----------- -------------------- -------------------------                      
+EMAIL                     PHONE_NUMBER         HIRE_DATE JOB_ID         SALARY  
+------------------------- -------------------- --------- ---------- ----------  
+COMMISSION_PCT MANAGER_ID DEPARTMENT_ID                                         
+-------------- ---------- -------------                                         
+                                                                                
+
+16 rows selected.
+
+
+
+
+QUESTION 10:
+
+SQL> select substr('Lalu Prasad Yadav',1,1)||'.'||substr('Lalu Prasad Yadav',instr('Lalu Prasad Yadav',' ')+1,1)||'.'||substr('Lalu Prasad Yadav',instr('Lalu Prasad Yadav',' ',1,2)+1) from dual;
+
+SUBSTR('L                                                                       
+---------                                                                       
+L.P.Yadav                                                                       
+
+
+
+
+QUESTION 11:
+
+SQL> select manager_id,min(salary) from employees where manager_id is not null group by manager_id having min(salary)>6000 order by 2 desc;
+
+MANAGER_ID MIN(SALARY)                                                          
+---------- -----------                                                          
+       102        9000                                                          
+       205        8300                                                          
+       145        7000                                                          
+       146        7000                                                          
+       108        6900                                                          
+       147        6200                                                          
+       149        6200                                                          
+       148        6100                                                          
+
+8 rows selected.
+
+
+
+
+QUESTION 12:
+
+SQL> select job_id,count(employee_id) from employees group by job_id;
+
+JOB_ID     COUNT(EMPLOYEE_ID)                                                   
+---------- ------------------                                                   
+AC_ACCOUNT                  1                                                   
+AC_MGR                      1                                                   
+AD_ASST                     1                                                   
+AD_PRES                     1                                                   
+AD_VP                       2                                                   
+FI_ACCOUNT                  5                                                   
+FI_MGR                      1                                                   
+HR_REP                      1                                                   
+IT_PROG                     5                                                   
+MK_MAN                      1                                                   
+MK_REP                      1                                                   
+
+JOB_ID     COUNT(EMPLOYEE_ID)                                                   
+---------- ------------------                                                   
+PR_REP                      1                                                   
+PU_CLERK                    5                                                   
+PU_MAN                      1                                                   
+SA_MAN                      5                                                   
+SA_REP                     30                                                   
+SH_CLERK                   20                                                   
+ST_CLERK                   20                                                   
+ST_MAN                      5                                                   
+
+19 rows selected.
+
+
+
+
+QUESTION 13:
+
+SQL> select job_id,min(salary),max(salary),sum(salary),avg(salary) from employees group by job_id;
+
+JOB_ID     MIN(SALARY) MAX(SALARY) SUM(SALARY) AVG(SALARY)                      
+---------- ----------- ----------- ----------- -----------                      
+IT_PROG           4200        9000       28800        5760                      
+AC_MGR           12000       12000       12000       12000                      
+AC_ACCOUNT        8300        8300        8300        8300                      
+ST_MAN            5800        8200       36400        7280                      
+PU_MAN           11000       11000       11000       11000                      
+AD_ASST           4400        4400        4400        4400                      
+AD_VP            17000       17000       34000       17000                      
+SH_CLERK          2500        4200       64300        3215                      
+FI_ACCOUNT        6900        9000       39600        7920                      
+FI_MGR           12000       12000       12000       12000                      
+PU_CLERK          2500        3100       13900        2780                      
+
+JOB_ID     MIN(SALARY) MAX(SALARY) SUM(SALARY) AVG(SALARY)                      
+---------- ----------- ----------- ----------- -----------                      
+SA_MAN           10500       14000       61000       12200                      
+MK_MAN           13000       13000       13000       13000                      
+PR_REP           10000       10000       10000       10000                      
+AD_PRES          24000       24000       24000       24000                      
+SA_REP            6100       11500      250500        8350                      
+MK_REP            6000        6000        6000        6000                      
+ST_CLERK          2100        3600       55700        2785                      
+HR_REP            6500        6500        6500        6500                      
+
+19 rows selected.
+
+
+
+
+QUESTION 14:
+
+SQL> select count(employee_id) from employees group by to_char(hire_date,'yyyy') having to_char(hire_date,'yyyy') in ('1995','1996','1997','1998');
+
+COUNT(EMPLOYEE_ID)                                                              
+------------------                                                              
+                28                                                              
+                 4                                                              
+                10                                                              
+                23
+
+QUESTION 15:
+
+SQL> select job_id from employees group by(job_id) having count(job_id)>1;
+
+JOB_ID                                                                          
+----------                                                                      
+AD_VP                                                                           
+FI_ACCOUNT                                                                      
+IT_PROG                                                                         
+PU_CLERK                                                                        
+SA_MAN                                                                          
+SA_REP                                                                          
+SH_CLERK                                                                        
+ST_CLERK                                                                        
+ST_MAN                                                                          
+
+9 rows selected.
+
+
+
+
+QUESTION 16:
+
+SQL> select unique job_id from employees;
+
+JOB_ID                                                                          
+----------                                                                      
+AC_ACCOUNT                                                                      
+AC_MGR                                                                          
+AD_ASST                                                                         
+AD_PRES                                                                         
+AD_VP                                                                           
+FI_ACCOUNT                                                                      
+FI_MGR                                                                          
+HR_REP                                                                          
+IT_PROG                                                                         
+MK_MAN                                                                          
+MK_REP                                                                          
+
+JOB_ID                                                                          
+----------                                                                      
+PR_REP                                                                          
+PU_CLERK                                                                        
+PU_MAN                                                                          
+SA_MAN                                                                          
+SA_REP                                                                          
+SH_CLERK                                                                        
+ST_CLERK                                                                        
+ST_MAN                                                                          
+
+19 rows selected.

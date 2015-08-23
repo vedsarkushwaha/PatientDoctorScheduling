@@ -1,0 +1,127 @@
+'''
+ * SQL file Containing Learning Assignment
+ *
+ * Copyright 2011 Vedsar
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License");
+ * you may not use this file except in compliance with the License.
+ * You may obtain a copy of the License at
+ *
+ *    http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS,
+ * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ * See the License for the specific language governing permissions and
+ * limitations under the License.
+'''
+
+
+NAME:-VEDSAR KUSHWAHA
+ENROLL:-53515
+STUDENT ID:-51060
+
+
+
+
+
+
+QUESTION 1:
+
+SQL> ed
+Wrote file d:\.sql
+
+  1  create or replace procedure secure_dml
+  2  is
+  3  no_dml exception;
+  4  pragma exception_init(no_dml,-20222);
+  5  begin
+  6  if((to_char(sysdate,'hh:mi am') not between '08:45 am' and '05:30 pm') and (to_char(sysdate,'dy') not in ('sat','sun'))) then
+  7  raise no_dml;
+  8  end if;
+  9  exception
+ 10  when no_dml then
+ 11  dbms_output.put_line('You may make changes only during normal office hours.');
+ 12* end;
+SQL> /
+
+Procedure created.
+
+
+
+
+QUESTION 2:
+
+SQL> create trigger trig_secure_dml
+  2  before update or insert or delete on jobs
+  3  begin
+  4  secure_dml();
+  5  end;
+  6  /
+
+Trigger created.
+
+SQL> insert into jobs values('111','asdf',null,null);
+You may make changes only during normal office hours.                           
+
+
+
+
+QUESTION 3:
+
+SQL> ed Wrote file d:\.sql
+
+  1  create or replace procedure upd_emp_sal(id jobs.job_id%type,sal number)
+  2  is
+  3  old_sal number(10);
+  4  incr number(10);
+  5  begin
+  6  select min_salary into old_sal from jobs where job_id=id;
+  7  incr:=sal-old_sal;
+  8  update employees set salary=salary+incr where job_id=id;
+  9* end;
+SQL> /
+
+Procedure created.
+
+SQL> ed
+Wrote file d:\.sql
+
+  1  create or replace trigger update_emp_salary
+  2  before update of min_salary on jobs
+  3  for each row
+  4  begin
+  5  if updating then
+  6  upd_emp_sal(:old.job_id,:new.min_salary);
+  7  end if;
+  8* end;
+SQL> /
+
+Trigger created.
+
+
+
+
+QUESTION 4:
+
+SQL> ed
+Wrote file d:\.sql
+
+  1   create or replace trigger test_sal
+  2   before update on employees
+  3   for each row
+  4   when (new.salary<old.salary)
+  5   begin
+  6   raise_application_error(-20211,'Salary_cannot_be_decreased');
+  7*  end;
+SQL> /
+
+Trigger created.
+
+SQL> update employees set salary=salary*.9 where last_name='Smith';
+update employees set salary=salary*.9 where last_name='Smith'
+       *
+ERROR at line 1:
+ORA-20211: Salary_cannot_be_decreased 
+ORA-06512: at "HR.TEST_SAL", line 2 
+ORA-04088: error during execution of trigger 'HR.TEST_SAL'
